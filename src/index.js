@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const {Client, IntentsBitField, messageLink} = require('discord.js');
 
