@@ -15,19 +15,33 @@ client.on('ready',(c) => {
     console.log(`☑️ ${c.user.tag} is online`);
 });  
 
-client.on('messageCreate', (message) => {
+client.on('interactionCreate',(interaction) => {
+    if (!interaction.isChatInputCommand()) return;
 
-    if (message.author.bot){
-        return;
+    // console.log(interaction.commandName);
+
+    if (interaction.commandName === "hey"){
+        interaction.reply("hey back!");
     }
 
-    if (message.content === "hello"){
-        message.reply("hello!");
-
+    if (interaction.commandName === "ping"){
+        interaction.reply("Pong!");
     }
-
-    // console.log(message.content);
-    // console.log(message.author.username);
 });
+
+// client.on('messageCreate', (message) => {
+
+//     if (message.author.bot){
+//         return;
+//     }
+
+//     if (message.content === "hello"){
+//         message.reply("hello!");
+
+//     }
+
+//     // console.log(message.content);
+//     // console.log(message.author.username);
+// });
 
 client.login(process.env.TOKEN);
